@@ -24,9 +24,7 @@ function App() {
       <SearchBox title="Find contacts by name" />
       {!isLoading && !error && <ContactList />}
       {isLoading && <Loader />}
-      {!isLoading && error !== null && (
-        <h2>Something went wrong... Try again.</h2>
-      )}
+      {error && <h2>Something went wrong... Try again.</h2>}
     </>
   );
 }

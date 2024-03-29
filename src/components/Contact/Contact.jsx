@@ -3,10 +3,12 @@ import { FaPhoneAlt } from 'react-icons/fa';
 import PropTypes from 'prop-types';
 import css from './Contact.module.css';
 import { useDispatch } from 'react-redux';
-import { deleteContact } from '../../redux/contactsSlice';
+import { deleteContact } from '../../redux/contactsOps';
 
 const Contact = ({ id, name, number }) => {
   const dispatch = useDispatch();
+
+  const handleDelete = () => dispatch(deleteContact(id));
 
   return (
     <>
@@ -23,11 +25,7 @@ const Contact = ({ id, name, number }) => {
       </div>
 
       {/* Кнопка видалення контакту */}
-      <button
-        type="button"
-        onClick={() => dispatch(deleteContact(id))}
-        className={css.deleteBtn}
-      >
+      <button type="button" className={css.deleteBtn} onClick={handleDelete}>
         Delete
       </button>
     </>
